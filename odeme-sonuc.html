@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ödeme Sonucu · Sanal Stüdyo</title>
+<style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#121110;color:#F3EFE7;font-family:system-ui,sans-serif}
+.box{max-width:440px;padding:40px;text-align:center}h1{font-size:28px;margin:0 0 12px}p{color:#ABA59A;line-height:1.6}
+a{display:inline-block;margin-top:20px;background:#C89B5C;color:#121110;font-weight:700;padding:14px 28px;border-radius:999px;text-decoration:none}</style></head>
+<body><div class="box"><h1 id="t"></h1><p id="m"></p><a href="/">Ana sayfaya dön</a></div>
+<script>
+var q=new URLSearchParams(location.search),d=q.get('durum'),p=q.get('paket');
+var s={basarili:['Ödemen alındı 🎉',(p?p+' paketin':'Paketin')+' aktif edilecek. Teşekkürler!'],
+basarisiz:['Ödeme tamamlanamadı','Kartından çekim yapılmadı. Tekrar deneyebilirsin.']}[d]||['Bir hata oluştu','Ödeme durumu doğrulanamadı. Çekim yapıldıysa bizimle iletişime geç.'];
+document.getElementById('t').textContent=s[0];document.getElementById('m').textContent=s[1];
+</script></body></html>

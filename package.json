@@ -1,0 +1,7 @@
+{
+  "name": "sanal-studyo",
+  "private": true,
+  "version": "1.0.0",
+  "engines": { "node": ">=18" },
+  "dependencies": { "iyzipay": "^2.0.64" }
+}
