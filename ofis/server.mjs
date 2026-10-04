@@ -17,6 +17,7 @@ import Anthropic from "@anthropic-ai/sdk";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = path.join(here, "public");
+const THREE_DIR = path.join(here, "node_modules", "three");
 const PORT = Number(process.env.PORT) || 3000;
 const MODEL = process.env.MODEL || "claude-opus-5-5";
 const EFFORT = process.env.EFFORT || "medium";
@@ -238,8 +239,11 @@ function json(res, durum, veri) {
 
 async function statik(req, res) {
   const yol = decodeURIComponent(new URL(req.url, "http://x").pathname);
-  const dosya = path.join(PUBLIC_DIR, yol === "/" ? "index.html" : yol);
-  if (!dosya.startsWith(PUBLIC_DIR + path.sep)) return json(res, 403, { hata: "Yasak" });
+  // 3B dünya için Three.js doğrudan node_modules'tan sunulur
+  const kok = yol.startsWith("/vendor/three/") ? THREE_DIR : PUBLIC_DIR;
+  const goreli = kok === THREE_DIR ? yol.slice("/vendor/three/".length) : yol === "/" ? "index.html" : yol;
+  const dosya = path.join(kok, goreli);
+  if (!dosya.startsWith(kok + path.sep)) return json(res, 403, { hata: "Yasak" });
   try {
     const icerik = await readFile(dosya);
     res.writeHead(200, { "content-type": TURLER[path.extname(dosya)] ?? "application/octet-stream" });

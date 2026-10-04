@@ -1,7 +1,7 @@
 # Sanal Ofis
 
-Görev verebileceğin 5 yapay zekâ çalışanının olduğu bir ofis simülasyonu.
-Görev yokken çalışanlar mutfakta çay demler, kahve yapar, ayak masasında sohbet eder ya da koltukta dinlenir.
+Görev verebileceğin 5 yapay zekâ çalışanının olduğu, Minecraft tarzı 3B bir ofis simülasyonu.
+Görev yokken çalışanlar mutfakta çay demler, kahve yapar, ayak masasında sohbet eder, koltukta dinlenir ya da dışarı çıkıp göl kenarında hava alır.
 Görev verdiğinde ilgili kişi masasına geçer, işi yapar ve sonucu **Teslimler** listesine bırakır.
 
 | Çalışan | Rol | Ne yapar |
@@ -22,7 +22,9 @@ npm install
 npm start                      # simülasyon modu, API anahtarı gerekmez
 ```
 
-Tarayıcıda http://localhost:3000 adresini aç.
+Tarayıcıda http://localhost:3000 adresini aç. Sayfa mutlaka bu adresten açılmalı; HTML dosyasına çift tıklayınca 3B dünya yüklenmez.
+
+**Dünyada gezinme:** sürükleyerek döndür, tekerlek ya da iki parmakla yakınlaş, sağ tıkla (ya da Shift + sürükle) kaydır. Bir çalışana tıklarsan görev formunda o seçilir. Sağ üstteki **Saat** düğmesi gündüz, gece ve gerçek saat arasında geçiş yapar.
 
 ### Claude API'ye bağlama (canlı mod)
 
@@ -43,8 +45,9 @@ Sağ üstteki rozet **Canlı** olur. Artık her çalışan görevi kendi rolüne
 
 ## Nasıl çalışır
 
-- `public/index.html`: ofis sahnesi, çalışanların mola rutini, görev kuyruğu ve teslimler. Tek dosyadır. Sunucu olmadan açılırsa simülasyon modunda çalışır.
-- `server.mjs`: sayfayı sunar ve `POST /api/gorev` isteğini Claude API'ye iletir (`@anthropic-ai/sdk`). Her çalışanın kendi sistem talimatı vardır. Yanıt sayfaya akış (SSE) olarak gelir.
+- `public/dunya.js`: Three.js ile kurulan blok dünyası. Dokular kod içinde piksel piksel çizilir, dışarıdan görsel dosyası yüklenmez. Bloklu karakterler yürür, oturur, yazar, çay ya da kahve içer.
+- `public/index.html`: görev paneli, çalışanların mola rutini, yürüme yolları, görev kuyruğu ve teslimler.
+- `server.mjs`: sayfayı ve Three.js dosyalarını sunar, `POST /api/gorev` isteğini Claude API'ye iletir (`@anthropic-ai/sdk`). Her çalışanın kendi sistem talimatı vardır. Yanıt sayfaya akış (SSE) olarak gelir.
 - **Otomatik atama:** Görev metnindeki anahtar kelimelere göre uygun kişi seçilir. Birden çok uzmanlık gerekiyorsa ya da iş belirsizse görev Elif'e gider.
 - **Ekibe dağıtım:** Elif'in `ekibe_dagit` aracı vardır. Büyük bir işi parçalara ayırıp Mert, Zeynep, Can ve Deniz'e alt görev olarak atar. Bu görevler, ana görevin bağlamıyla birlikte ilgili kişinin kuyruğuna girer.
 - Çalışan meşgulse yeni görev onun kuyruğuna girer. İşini bitirince sıradakine geçer, kuyruk boşsa molaya çıkar.
