@@ -159,7 +159,7 @@
 </div>
 
 <h1>Sıcak Meyveler</h1>
-<p class="sub">5 makara · 5 sabit hat · Scatter yıldız · Teorik RTP ≈ %95–96</p>
+<p class="sub">5 makara · 5 sabit hat · Kazanma sıklığı ≈ %50 · Teorik RTP ≈ %96</p>
 
 <main class="machine">
   <div class="reels" id="reels" aria-live="polite"></div>
@@ -194,8 +194,10 @@
       <div class="meter"><small>Gerçekleşen RTP</small><b id="sRtp">–</b></div>
       <div class="meter"><small>Toplam bahis</small><b id="sBet">0</b></div>
       <div class="meter"><small>Toplam kazanç</small><b id="sWin">0</b></div>
+      <div class="meter"><small>Kazanma sıklığı</small><b id="sHit">–</b></div>
+      <div class="meter"><small>Net</small><b id="sNet">0</b></div>
     </div>
-    <p>Kısa vadede RTP çok dalgalanır. Uzun vadede teorik değere yaklaşır. Aşağıdaki buton, animasyonsuz 1 milyon spin hesaplayıp bunu gösterir (kredini etkilemez).</p>
+    <p>Spinlerin yaklaşık yarısı kazanç getirir, ama bunların çoğu bahisten küçüktür (örn. 2 kiraz). Kısa vadede RTP çok dalgalanır. Uzun vadede teorik değere yaklaşır. Aşağıdaki buton, animasyonsuz 1 milyon spin hesaplayıp bunu gösterir (kredini etkilemez).</p>
     <div class="row2" style="justify-content:flex-start">
       <button class="btn" id="simBtn">1.000.000 spin simüle et</button>
     </div>
@@ -222,8 +224,9 @@
     star:   { icon: '⭐', name: 'Yıldız (scatter)' },
   };
 
-  // Her makaradaki sembol şeridi (44 konum). Sık sembol = düşük ödeme.
-  const STRIP = ["lemon","star","peach","melon","cherry","lemon","seven","peach","orange","peach","cherry","peach","cherry","cherry","grape","lemon","lemon","orange","lemon","grape","lemon","cherry","grape","orange","star","orange","cherry","orange","grape","lemon","cherry","peach","melon","orange","orange","melon","peach","seven","orange","peach","cherry","lemon","melon","cherry"];
+  // Her makaradaki sembol şeridi (50 konum). Sık sembol = düşük ödeme.
+  // 16 kiraz, şeride eşit aralıkla dağıtılır → spinlerin ~%50'si kazançlı.
+  const STRIP = ["cherry","lemon","orange","peach","cherry","grape","melon","cherry","lemon","orange","cherry","peach","seven","star","cherry","lemon","orange","cherry","grape","melon","cherry","peach","lemon","orange","cherry","cherry","lemon","orange","peach","cherry","grape","melon","cherry","lemon","orange","cherry","peach","seven","star","cherry","lemon","orange","cherry","grape","melon","cherry","peach","lemon","orange","cherry"];
 
   // Hat bahsi çarpanları: [2'li, 3'lü, 4'lü, 5'li]
   const PAYS = {
@@ -231,9 +234,9 @@
     melon:  [0, 40, 120, 500],
     grape:  [0, 40, 120, 500],
     peach:  [0, 20, 50, 200],
-    orange: [0, 17, 45, 180],
-    lemon:  [0, 17, 45, 180],
-    cherry: [5, 15, 40, 160],
+    orange: [0, 15, 40, 150],
+    lemon:  [0, 15, 40, 150],
+    cherry: [2, 7, 20, 60],
   };
   // Scatter: toplam bahis × çarpan, ekranın herhangi bir yerinde
   const SCATTER = { 3: 2, 4: 10, 5: 50 };
@@ -328,7 +331,7 @@
 
   const state = {
     credit: 1000, betIdx: 0, spinning: false, auto: false,
-    spins: 0, totalBet: 0, totalWin: 0,
+    spins: 0, hits: 0, totalBet: 0, totalWin: 0,
   };
   const lineBet = () => LINE_BETS[state.betIdx];
   const totalBet = () => lineBet() * LINE_COUNT;
@@ -340,6 +343,9 @@
     $('sSpins').textContent = fmt(state.spins);
     $('sBet').textContent = fmt(state.totalBet);
     $('sWin').textContent = fmt(state.totalWin);
+    $('sHit').textContent = state.spins ? '%' + (state.hits / state.spins * 100).toFixed(1) : '–';
+    const net = state.totalWin - state.totalBet;
+    $('sNet').textContent = (net > 0 ? '+' : '') + fmt(net);
     $('sRtp').textContent = state.totalBet ? '%' + (state.totalWin / state.totalBet * 100).toFixed(1) : '–';
     $('betDown').disabled = state.spinning || state.betIdx === 0;
     $('betUp').disabled = state.spinning || state.betIdx === LINE_BETS.length - 1;
@@ -393,11 +399,13 @@
     state.totalWin += won;
 
     if (won > 0) {
+      state.hits++;
       result.wins.forEach(w => w.cells.forEach(([r, i]) => cells[r][i].classList.add('win')));
       const parts = result.wins.map(w => w.scatter
         ? `${w.count}× ⭐`
         : `Hat ${w.line + 1}: ${w.count}× ${SYMBOLS[w.symbol].icon}`);
-      setMsg(`Kazanç ${fmt(won)} — ${parts.join(' · ')}`, 'win');
+      const tag = won < totalBet() ? ' (bahsin altında)' : '';
+      setMsg(`Kazanç ${fmt(won)}${tag} — ${parts.join(' · ')}`, 'win');
     } else {
       setMsg('Kazanç yok', 'lose');
     }
@@ -427,7 +435,7 @@
   $('autoBtn').addEventListener('click', () => { state.auto = !state.auto; render(); if (state.auto) spin(); });
   $('resetBtn').addEventListener('click', () => {
     if (state.spinning) return;
-    Object.assign(state, { credit: 1000, auto: false, spins: 0, totalBet: 0, totalWin: 0 });
+    Object.assign(state, { credit: 1000, auto: false, spins: 0, hits: 0, totalBet: 0, totalWin: 0 });
     setMsg('Kredi 1.000 olarak sıfırlandı');
     render();
   });
