@@ -51,3 +51,15 @@ Bu dosya, Hakan'ın "kaydet" dediği metinleri toplar. Sonunda sunum dosyasına 
 - **Neden paylaşsın:** Kemiğini umursamayan arkadaşa.
 - **Obje (isteğe bağlı):** Temsili röntgen filmi (hasta bilgisi olmadan).
 - **Onay:** "Yaklaşık 10 yıl" ifadesi.
+
+## Soru-cevap
+
+### S1. Ağrıya sıcak mı, soğuk mu?
+- **Kanca:** Ekranda soru kartı: "HOCAM, SICAK MI KOYAYIM?" Hoca: "İkisi de doğru. Ama yanlış zamanda ikisi de yanlış."
+- **Metin:** "İkisi de doğru. Ama yanlış zamanda ikisi de yanlış. Yeni bir burkulma, darbe ya da şişlik varsa ilk günlerde soğuk. Şişliği azaltır. Şişlik yoksa, kas tutulması ya da eski bir sertlik varsa sıcak. Kası gevşetir. Kısacası: Yeni ve şişse soğuk, eski ve sertse sıcak. Sizin evde hangisi kullanılıyor?"
+- **Yazı:** YENİ → SOĞUK · ESKİ → SICAK
+- **Neden izlesin:** "İkisi de yanlış" ters köşesi.
+- **Neden yorum yapsın:** Evdeki sıcak-soğuk tartışması.
+- **Neden paylaşsın:** Her şeye sıcak su torbası koyan yakına.
+- **Obje (isteğe bağlı):** Buz torbası ve sıcak su torbası.
+- **Onay:** "İlk günler" süresi (genelde 48 saat).
