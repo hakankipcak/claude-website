@@ -21,3 +21,13 @@ Bu dosya, Hakan'ın "kaydet" dediği metinleri toplar. Sonunda sunum dosyasına 
 - **Neden paylaşsın:** Telefondan başını kaldırmayan arkadaşa.
 - **Obje:** Telefon.
 - **Onay:** 27 kilo rakamı (modelleme çalışması).
+
+### H2. Her dört kemiğinizden biri ayağınızda
+- **Kanca:** Ekranda ayak iskeleti grafiği. Hoca: "Vücudunuzdaki her dört kemikten biri tek bir yerde."
+- **Metin:** "Vücudunuzdaki her dört kemikten biri ayağınızda. Her ayakta 26 kemik var. Bütün gün tüm ağırlığınızı bu küçük yapı taşıyor. Peki biz ona ne veriyoruz? Dar ayakkabı, saatlerce ayakta kalmak. Akşam ayağınız ağrıyorsa bu bir mesaj. Siz günde kaç saat ayaktasınız? Yazın."
+- **Yazı:** DÖRTTE BİR → 26 KEMİK → KAÇ SAAT?
+- **Neden izlesin:** "Her dört kemikten biri" şaşırtıcı bir oran.
+- **Neden yorum yapsın:** Tek bir sayı yazmak yeterli.
+- **Neden paylaşsın:** Ayakta çalışan birine.
+- **Obje (isteğe bağlı):** Ayakkabı.
+- **Onay:** Kemik sayısı.
