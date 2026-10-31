@@ -31,3 +31,13 @@ Bu dosya, Hakan'ın "kaydet" dediği metinleri toplar. Sonunda sunum dosyasına 
 - **Neden paylaşsın:** Ayakta çalışan birine.
 - **Obje (isteğe bağlı):** Ayakkabı.
 - **Onay:** Kemik sayısı.
+
+### H3. Sabah ilk adımda topuğunuz batıyorsa
+- **Kanca:** Hoca ilk adımı atıyormuş gibi yüzünü hafifçe buruşturuyor, sonra kameraya: "Sabah ilk adım... batıyor mu?"
+- **Metin:** "Sabah yataktan kalkıyorsunuz, ilk adımda topuğunuza bir şey batıyor. Birkaç adım sonra azalıyor. Tanıdık mı? Bu çoğu zaman ayak tabanındaki kalın bağ dokusunun zorlanmasıdır. Gece kısalıyor, sabah ilk adımda geriliyor. Çoğu zaman basit önlemlerle rahatlar. Ama haftalardır sürüyorsa bir kez bakalım. Sizde de oluyor mu?"
+- **Yazı:** İLK ADIM → TABAN BAĞI → HAFTALARDIR?
+- **Neden izlesin:** Herkesin tanıdığı bir sabah anı.
+- **Neden yorum yapsın:** Evet ya da hayır demek yeterli.
+- **Neden paylaşsın:** Sabahları topallayan anneye ya da babaya.
+- **Obje (isteğe bağlı):** Terlik.
+- **Onay:** Mekanizma anlatımı ve "basit önlemler" ifadesi.
