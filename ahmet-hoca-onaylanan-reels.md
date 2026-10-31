@@ -83,3 +83,13 @@ Bu dosya, Hakan'ın "kaydet" dediği metinleri toplar. Sonunda sunum dosyasına 
 - **Neden paylaşsın:** Korkup doktora gitmeyen yakına.
 - **Obje (isteğe bağlı):** Temsili röntgen filmi (hasta bilgisi olmadan).
 - **Onay:** "Çok düşük doz" ve "sadece gerektiğinde" ifadeleri.
+
+### S4. Topuklu ayakkabı ayağa zarar verir mi?
+- **Kanca:** Ekranda soru kartı: "HOCAM, TOPUKLU ZARAR VERİR Mİ?" Hoca: "Her gün topuklu giyen biri varsa bu videoyu ona gönderin."
+- **Metin:** "Her gün topuklu giyen biri varsa bu videoyu ona gönderin. Topuklu ayakkabıda ağırlık ayağın ön kısmına kayar. Bu da ayak, bilek ve dizdeki yükü artırır. Hiç giymeyin demiyorum. Önemli olan sıklık ve süre. Seçerek giyin, aralarda dinlendirin. Ağrı varsa 'alışırım' demeyin. Topuklu mu, düz taban mı? Siz hangi takımdasınız?"
+- **Yazı:** ÖNE KAYAR → SIKLIK ÖNEMLİ → HANGİ TAKIM?
+- **Neden izlesin:** İlk cümle paylaşım istiyor.
+- **Neden yorum yapsın:** "Hangi takım?" taraf tutturuyor.
+- **Neden paylaşsın:** Topuklu seven arkadaşa.
+- **Obje (isteğe bağlı):** Topuklu ayakkabı.
+- **Onay:** Ayak, bilek ve diz yükü cümlesi.
