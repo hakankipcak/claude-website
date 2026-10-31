@@ -73,3 +73,13 @@ Bu dosya, Hakan'ın "kaydet" dediği metinleri toplar. Sonunda sunum dosyasına 
 - **Neden paylaşsın:** Fıtık tanısı alan yakına.
 - **Obje (isteğe bağlı):** Temsili MR filmi (hasta bilgisi olmadan).
 - **Onay:** "Çoğu zaman" ifadesi ve acil belirtiler; garanti dili yok.
+
+### S3. Hocam, röntgen zararlı mı?
+- **Kanca:** Ekranda soru kartı: "HOCAM, RÖNTGEN ZARARLI MI?" Hoca: "Bunu neredeyse her gün duyuyorum."
+- **Metin:** "Bunu neredeyse her gün duyuyorum. Röntgen çok düşük dozda ışın kullanır ve ben onu sadece gerektiğinde isterim. Çünkü bir çatlağı çoğu zaman gözle ya da elle anlayamayız. Tek bir resim şüpheyi ortadan kaldırır. Korkup muayeneyi geciktirmek çoğu zaman daha büyük risktir. Siz en son ne zaman röntgen çektirdiniz?"
+- **Yazı:** DÜŞÜK DOZ → GEREKİRSE → TEK RESİM
+- **Neden izlesin:** Hastaların her gün sorduğu gerçek soru.
+- **Neden yorum yapsın:** Cevabı kolay, bir tarih ya da durum yazmak yeterli.
+- **Neden paylaşsın:** Korkup doktora gitmeyen yakına.
+- **Obje (isteğe bağlı):** Temsili röntgen filmi (hasta bilgisi olmadan).
+- **Onay:** "Çok düşük doz" ve "sadece gerektiğinde" ifadeleri.
