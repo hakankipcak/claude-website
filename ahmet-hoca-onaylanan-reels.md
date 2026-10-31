@@ -153,7 +153,7 @@ Bu dosya, Hakan'ın "kaydet" dediği metinleri toplar. Sunum: https://claude.ai/
 ### 4.3 Oynatabiliyorsan kırık değildir
 - **Kanca:** Hoca bileğini çevirip "Bak, oynuyor" diyor. YANLIŞ damgası iniyor.
 - **Metin:** "Düştünüz, bileğiniz şişti. Biri dedi ki: 'Oynatabiliyor musun? Oynuyorsa kırık yok.' Siz de rahatlamak istediniz, çünkü kimse hastaneye gitmek istemez. Ama bu cümleyle günler sonra muayeneye gelen çok hasta görüyorum. Çatlak tarzı kırıklarda hareket hâlâ mümkündür, sadece ağrılıdır. Şişlik, morarma ve geçmeyen ağrı varsa 'oynuyor' demeyin. Tek bir röntgen içinizi rahatlatır. Bu cümleyi size kim söyledi?"
-- **Yazı:** OYNUYOR ≠ SAĞLAM → NOKTA AĞRISI → TEK RÖNTGEN
+- **Yazı:** OYNUYOR ≠ SAĞLAM → ŞİŞLİK, MORARMA → TEK RÖNTGEN
 - **Obje (isteğe bağlı):** Yok.
 - **Onay:** Şişlik, morarma ve ağrı belirtileri.
 
