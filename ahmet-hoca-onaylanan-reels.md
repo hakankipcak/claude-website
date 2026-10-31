@@ -63,3 +63,13 @@ Bu dosya, Hakan'ın "kaydet" dediği metinleri toplar. Sonunda sunum dosyasına 
 - **Neden paylaşsın:** Her şeye sıcak su torbası koyan yakına.
 - **Obje (isteğe bağlı):** Buz torbası ve sıcak su torbası.
 - **Onay:** "İlk günler" süresi (genelde 48 saat).
+
+### S2. Fıtık varsa ameliyat şart mı?
+- **Kanca:** Ekranda soru kartı: "HOCAM, AMELİYAT ŞART MI?" Hoca: "Fıtık tanısı alan herkesin ilk sorusu bu."
+- **Metin:** "Fıtık tanısı alan herkesin ilk sorusu bu. Cevap: Çoğu zaman hayır. Birçok bel fıtığı ilaç, egzersiz ve zamanla rahatlar. Ama bazı durumlarda beklemeyiz: Bacakta giderek artan güç kaybı, idrarı ya da dışkıyı kontrol edememe. Bunlar acildir. Kararı sadece MR'a bakarak değil, size bakarak birlikte veririz. Aklınızdaki soruyu yorumlara yazın."
+- **Yazı:** ÇOĞU ZAMAN HAYIR → GÜÇ KAYBI → ACİL
+- **Neden izlesin:** Fıtık tanısı alan herkesin aklındaki soru.
+- **Neden yorum yapsın:** Kendi durumunu ya da sorusunu yazar.
+- **Neden paylaşsın:** Fıtık tanısı alan yakına.
+- **Obje (isteğe bağlı):** Temsili MR filmi (hasta bilgisi olmadan).
+- **Onay:** "Çoğu zaman" ifadesi ve acil belirtiler; garanti dili yok.
