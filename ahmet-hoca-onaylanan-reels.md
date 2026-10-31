@@ -41,3 +41,13 @@ Bu dosya, Hakan'ın "kaydet" dediği metinleri toplar. Sonunda sunum dosyasına 
 - **Neden paylaşsın:** Sabahları topallayan anneye ya da babaya.
 - **Obje (isteğe bağlı):** Terlik.
 - **Onay:** Mekanizma anlatımı ve "basit önlemler" ifadesi.
+
+### H4. 10 yıl sonra bu kemikler sizin olmayacak
+- **Kanca:** Hoca kameraya dümdüz bakıyor: "10 yıl sonra bu kemikler sizin olmayacak."
+- **Metin:** "10 yıl sonra bu kemikler sizin olmayacak. Korkmayın, yenileri olacak. Kemik, sürekli kendini yıkıp yeniden yapan canlı bir doku. Yetişkinde iskeletin yaklaşık 10 yılda yenilendiği söylenir. Ama yeni kemiğin ne kadar sağlam olacağı size bağlı. Hareket, güneş, dengeli beslenme. Bugün kemiğiniz için ne yaptınız? Yazın."
+- **Yazı:** 10 YIL → YENİ İSKELET → SİZE BAĞLI
+- **Neden izlesin:** Korkutup rahatlatan ters köşe.
+- **Neden yorum yapsın:** "Ne yaptınız?" sorusu kolay.
+- **Neden paylaşsın:** Kemiğini umursamayan arkadaşa.
+- **Obje (isteğe bağlı):** Temsili röntgen filmi (hasta bilgisi olmadan).
+- **Onay:** "Yaklaşık 10 yıl" ifadesi.
