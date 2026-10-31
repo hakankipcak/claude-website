@@ -159,7 +159,7 @@
 </div>
 
 <h1>Sıcak Meyveler</h1>
-<p class="sub">5 makara · 5 sabit hat · Kazanma sıklığı ≈ %50 · Teorik RTP ≈ %96</p>
+<p class="sub">5 makara · 5 sabit hat · Kazanma sıklığı ≈ %50 · Teorik RTP <span id="rtpLabel">≈ %106</span></p>
 
 <main class="machine">
   <div class="reels" id="reels" aria-live="polite"></div>
@@ -179,6 +179,10 @@
     <button class="btn" id="autoBtn">Otomatik oyun</button>
     <button class="btn" id="resetBtn">Krediyi sıfırla</button>
   </div>
+  <div class="row2" id="rtpModes" role="group" aria-label="RTP sürümü">
+    <button class="btn" data-rtp="106">RTP %106 · oyuncu lehine</button>
+    <button class="btn" data-rtp="96">RTP %96 · gazino lehine</button>
+  </div>
 </main>
 
 <section class="panels">
@@ -197,7 +201,7 @@
       <div class="meter"><small>Kazanma sıklığı</small><b id="sHit">–</b></div>
       <div class="meter"><small>Net</small><b id="sNet">0</b></div>
     </div>
-    <p>Spinlerin yaklaşık yarısı kazanç getirir, ama bunların çoğu bahisten küçüktür (örn. 2 kiraz). Kısa vadede RTP çok dalgalanır. Uzun vadede teorik değere yaklaşır. Aşağıdaki buton, animasyonsuz 1 milyon spin hesaplayıp bunu gösterir (kredini etkilemez).</p>
+    <p>Spinlerin yaklaşık yarısı kazanç getirir, ama bunların çoğu bahisten küçüktür (örn. 2 kiraz). RTP %100'ün üstündeyse oyuncu uzun vadede kazanır, altındaysa gazino. Kısa vadede RTP çok dalgalanır. Uzun vadede teorik değere yaklaşır. Aşağıdaki buton, animasyonsuz 1 milyon spin hesaplayıp bunu gösterir (kredini etkilemez).</p>
     <div class="row2" style="justify-content:flex-start">
       <button class="btn" id="simBtn">1.000.000 spin simüle et</button>
     </div>
@@ -229,15 +233,30 @@
   const STRIP = ["cherry","lemon","orange","peach","cherry","grape","melon","cherry","lemon","orange","cherry","peach","seven","star","cherry","lemon","orange","cherry","grape","melon","cherry","peach","lemon","orange","cherry","cherry","lemon","orange","peach","cherry","grape","melon","cherry","lemon","orange","cherry","peach","seven","star","cherry","lemon","orange","cherry","grape","melon","cherry","peach","lemon","orange","cherry"];
 
   // Hat bahsi çarpanları: [2'li, 3'lü, 4'lü, 5'li]
-  const PAYS = {
-    seven:  [0, 100, 1000, 5000],
-    melon:  [0, 40, 120, 500],
-    grape:  [0, 40, 120, 500],
-    peach:  [0, 20, 50, 200],
-    orange: [0, 15, 40, 150],
-    lemon:  [0, 15, 40, 150],
-    cherry: [2, 7, 20, 60],
+  // İki RTP sürümü — aynı makara şeridi, farklı ödeme tablosu.
+  // Gerçek gazinolarda olduğu gibi: şerit aynı kalır, sertifikalı tablolardan biri seçilir.
+  const PAYTABLES = {
+    106: { label: 'RTP %106 · oyuncu lehine', pays: {
+      seven:  [0, 100, 1000, 5000],
+      melon:  [0, 45, 130, 550],
+      grape:  [0, 45, 130, 550],
+      peach:  [0, 22, 55, 220],
+      orange: [0, 17, 45, 170],
+      lemon:  [0, 17, 45, 170],
+      cherry: [2, 8, 22, 70],
+    }},
+    96: { label: 'RTP %96 · gazino lehine', pays: {
+      seven:  [0, 100, 1000, 5000],
+      melon:  [0, 40, 120, 500],
+      grape:  [0, 40, 120, 500],
+      peach:  [0, 20, 50, 200],
+      orange: [0, 15, 40, 150],
+      lemon:  [0, 15, 40, 150],
+      cherry: [2, 7, 20, 60],
+    }},
   };
+  let rtpMode = 106;
+  let PAYS = PAYTABLES[rtpMode].pays;
   // Scatter: toplam bahis × çarpan, ekranın herhangi bir yerinde
   const SCATTER = { 3: 2, 4: 10, 5: 50 };
 
@@ -323,11 +342,14 @@
 
   // Ödeme tablosu
   const pt = $('paytable');
-  pt.innerHTML = '<tr><th></th><th>2</th><th>3</th><th>4</th><th>5</th></tr>' +
+  function renderPaytable() {
+    pt.innerHTML = '<tr><th></th><th>2</th><th>3</th><th>4</th><th>5</th></tr>' +
     Object.entries(PAYS).map(([k, v]) =>
       `<tr><td class="${k === 'seven' ? 'seven' : ''}">${SYMBOLS[k].icon}</td>${v.map(x => `<td>${x || '–'}</td>`).join('')}</tr>`
     ).join('') +
     `<tr><td>⭐</td><td>–</td>${[3,4,5].map(n => `<td>${SCATTER[n]}×T</td>`).join('')}</tr>`;
+  }
+  renderPaytable();
 
   const state = {
     credit: 1000, betIdx: 0, spinning: false, auto: false,
@@ -351,6 +373,11 @@
     $('betUp').disabled = state.spinning || state.betIdx === LINE_BETS.length - 1;
     $('spinBtn').disabled = state.spinning || state.credit < totalBet();
     $('autoBtn').classList.toggle('on', state.auto);
+    $('rtpLabel').textContent = '≈ %' + rtpMode;
+    document.querySelectorAll('#rtpModes [data-rtp]').forEach(b => {
+      b.classList.toggle('on', +b.dataset.rtp === rtpMode);
+      b.disabled = state.spinning;
+    });
   }
 
   function setMsg(text, cls) {
@@ -433,6 +460,16 @@
   $('betUp').addEventListener('click', () => { state.betIdx = Math.min(state.betIdx + 1, LINE_BETS.length - 1); render(); });
   $('betDown').addEventListener('click', () => { state.betIdx = Math.max(state.betIdx - 1, 0); render(); });
   $('autoBtn').addEventListener('click', () => { state.auto = !state.auto; render(); if (state.auto) spin(); });
+  document.querySelectorAll('#rtpModes [data-rtp]').forEach(b => b.addEventListener('click', () => {
+    if (state.spinning) return;
+    rtpMode = +b.dataset.rtp;
+    PAYS = PAYTABLES[rtpMode].pays;
+    renderPaytable();
+    Object.assign(state, { credit: 1000, auto: false, spins: 0, hits: 0, totalBet: 0, totalWin: 0 });
+    $('simOut').textContent = '';
+    setMsg(`${PAYTABLES[rtpMode].label} seçildi — kredi ve istatistikler sıfırlandı`);
+    render();
+  }));
   $('resetBtn').addEventListener('click', () => {
     if (state.spinning) return;
     Object.assign(state, { credit: 1000, auto: false, spins: 0, hits: 0, totalBet: 0, totalWin: 0 });
