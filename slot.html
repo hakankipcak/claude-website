@@ -121,6 +121,7 @@
   }
   .btn:hover { color: var(--text); border-color: var(--dim); }
   .btn.on { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+  .btn:disabled { opacity: .4; cursor: default; }
 
   .panels {
     width: 100%; max-width: 760px; display: grid; gap: 16px;
@@ -177,6 +178,8 @@
 
   <div class="row2">
     <button class="btn" id="autoBtn">Otomatik oyun</button>
+    <button class="btn" data-fast="1000">Hızlı oyna: 1.000 spin</button>
+    <button class="btn" data-fast="10000">Hızlı oyna: 10.000 spin</button>
     <button class="btn" id="resetBtn">Krediyi sıfırla</button>
   </div>
   <div class="row2" id="rtpModes" role="group" aria-label="RTP sürümü">
@@ -373,6 +376,7 @@
     $('betUp').disabled = state.spinning || state.betIdx === LINE_BETS.length - 1;
     $('spinBtn').disabled = state.spinning || state.credit < totalBet();
     $('autoBtn').classList.toggle('on', state.auto);
+    document.querySelectorAll('[data-fast]').forEach(b => { b.disabled = state.spinning || state.credit < totalBet(); });
     $('rtpLabel').textContent = '≈ %' + rtpMode;
     document.querySelectorAll('#rtpModes [data-rtp]').forEach(b => {
       b.classList.toggle('on', +b.dataset.rtp === rtpMode);
@@ -460,6 +464,32 @@
   $('betUp').addEventListener('click', () => { state.betIdx = Math.min(state.betIdx + 1, LINE_BETS.length - 1); render(); });
   $('betDown').addEventListener('click', () => { state.betIdx = Math.max(state.betIdx - 1, 0); render(); });
   $('autoBtn').addEventListener('click', () => { state.auto = !state.auto; render(); if (state.auto) spin(); });
+  // Hızlı oyun: animasyonsuz n spin, sonuç krediye ve istatistiğe yansır
+  function fastPlay(n) {
+    if (state.spinning) return;
+    state.auto = false;
+    cells.flat().forEach(c => c.classList.remove('win'));
+    const startCredit = state.credit;
+    let played = 0, grid = null, best = 0;
+    while (played < n && state.credit >= totalBet()) {
+      state.credit -= totalBet();
+      state.totalBet += totalBet();
+      state.spins++;
+      grid = spinGrid();
+      const won = evaluate(grid).total * lineBet();
+      if (won > 0) { state.hits++; state.credit += won; state.totalWin += won; }
+      if (won > best) best = won;
+      played++;
+    }
+    if (grid) grid.forEach((col, r) => col.forEach((s, i) => paint(cells[r][i], s)));
+    const net = state.credit - startCredit;
+    const sign = net > 0 ? '+' : '';
+    const stop = played < n ? ` — kredi bittiği için ${fmt(played)}. spinde durdu` : '';
+    setMsg(`${fmt(played)} spin oynandı · net ${sign}${fmt(net)} · en büyük kazanç ${fmt(best)}${stop}`, net > 0 ? 'win' : 'lose');
+    render();
+  }
+  document.querySelectorAll('[data-fast]').forEach(b => b.addEventListener('click', () => fastPlay(+b.dataset.fast)));
+
   document.querySelectorAll('#rtpModes [data-rtp]').forEach(b => b.addEventListener('click', () => {
     if (state.spinning) return;
     rtpMode = +b.dataset.rtp;
