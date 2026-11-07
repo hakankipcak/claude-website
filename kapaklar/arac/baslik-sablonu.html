@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+<style>
+html,body{margin:0;width:1080px;height:1920px;background:transparent}
+.band{position:absolute;left:70px;width:940px;top:1160px;display:flex;flex-direction:column;align-items:center;transform:rotate(-3deg);font-family:'Anton',Impact,sans-serif;text-transform:uppercase;white-space:nowrap;line-height:1.02}
+.l{display:inline-block;transform-origin:center}
+.l1{color:#FFC800;text-shadow:0 8px 0 rgba(0,0,0,.4),0 14px 36px rgba(0,0,0,.85)}
+.l2{color:#FFFFFF;text-shadow:0 7px 0 rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.85)}
+</style></head><body><div class="band"><div class="l l1" id="a">BU 26 KEMİĞİ</div><div class="l l2" id="b">UNUTTUNUZ!</div></div>
+<script>
+document.fonts.ready.then(()=>{
+ for(const [id,w,max] of [['a',940,260],['b',940,160]]){
+  const e=document.getElementById(id); let s=100; e.style.fontSize=s+'px';
+  s=Math.min(max, s*w/e.getBoundingClientRect().width); e.style.fontSize=s+'px';
+ }
+ document.body.setAttribute('data-ready','1');
+});
+</script></body></html>

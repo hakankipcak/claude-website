@@ -23,6 +23,28 @@ Değiştirilecek yerler: `[ARKA PLAN SAHNESİ]`, `[SARI SATIR]`, `[BEYAZ SATIR]`
 - `[SARI SATIR]`: ŞU AN BOYNUNUZ
 - `[BEYAZ SATIR]`: BİR ÇOCUK TAŞIYOR
 
+## Yeni çalışma şekli: yazı Gemini'de değil, ayrı katmanda (7 Kasım 2026)
+Gemini yazıyı tutarsız çiziyor (harf aralığı, kalınlık, gölge). Bu yüzden:
+1. Gemini'ye **yazısız** arka plan promptu verilir (altta, yüksekliğin %60'ından aşağısı koyu ve boş).
+2. Başlık, Anton yazı tipiyle ayrı bir şeffaf PNG katmanı olarak basılır ve görselin üstüne yerleştirilir.
+- Şablon: `kapaklar/arac/baslik-sablonu.html` (iki satırın metnini değiştir) ve `kapaklar/arac/render.js` (Playwright ile 1080x1920 şeffaf PNG üretir).
+- Her satır kadrajın genişliğine (940 px) sığdırılır, 3 derece yukarı eğimli, sarı #FFC800 ve beyaz, yumuşak siyah gölge.
+- Başlık konumu: yüksekliğin %60-78'i arası.
+- Başlıklar merak uyandırmalı: kısa rakam ya da soru kancası (eski kapaklardaki "sahaya dönüş ne zaman?" gibi).
+
+### Eski kapaklardaki görsel dil (Hakan'ın beğendiği)
+Koyu sinematik zemin, Hoca ortada keskin kesilmiş ve ince kenar ışığıyla, arkada mavi-camgöbeği parlayan yarı saydam anatomi, vurgulanan bölge turuncu ışıltılı.
+
+### H2 – Her dört kemiğinizden biri ayağınızda (kapak onaylı başlık)
+- Başlık: **BU 26 KEMİĞİ** (sarı) / **UNUTTUNUZ!** (beyaz)
+- Katman: `kapaklar/H2-baslik.png`
+- Alternatif (kullanılmadı): ZONKLAYAN AYAK / NE DEMEK İSTİYOR?
+- Gemini arka plan promptu (yazısız):
+
+```
+<<<img1>>> Referans fotoğrafı olduğu gibi kullan; kişiyi birebir aynı koru: yüzü, sakalı, gözlüğü, saçı, kıyafeti, pozu, duruşu, el ve kol hareketleri, bakışı ve ifadesi hiçbir şekilde değişmesin. Eline hiçbir obje verme, kıyafete hiçbir şey ekleme. Kişiyi net şekilde kes, kadrajın ortasına yerleştir, çevresinde ince, yumuşak bir kenar ışığı (rim light) olsun. Sadece arka planı değiştir. Dikey 9:16 Instagram Reels kapağı (1080x1920). Arka plan: kişi dışında hiç insan olmayan, koyu ve sinematik bir sahne. Solda büyük boyutlu, yarı saydam, mavi-camgöbeği parlayan bir insan ayağı ve ayak bileği kemik yapısı (röntgen benzeri ışıltılı anatomi), ayak tabanındaki ve topuktaki kemikler sıcak turuncu bir parıltıyla vurgulanmış. Sağda koyu tealden siyaha geçen sade, hafif bulanık bir klinik arka plan. Dramatik ışık, derin kontrast, sığ alan derinliği, editoryal belgesel görünümü, fotogerçekçi. Görselin alt üçte biri (yüksekliğin %60'ından aşağısı) koyu, yumuşak bir geçişle kararmış olsun; orada hiçbir nesne ya da yazı olmasın. Görselde hiçbir yazı, harf, logo ya da filigran olmasın.
+```
+
 ## Diğer Hap bilgi kapakları (önerilen başlıklar ve sahneler)
 
 | Kod | Sarı satır | Beyaz satır | Arka plan sahnesi |
