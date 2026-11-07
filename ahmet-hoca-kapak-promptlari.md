@@ -49,7 +49,7 @@ Koyu sinematik zemin, Hoca ortada keskin kesilmiş ve ince kenar ışığıyla, 
 
 | Kod | Sarı satır | Beyaz satır | Arka plan sahnesi |
 |---|---|---|---|
-| H2 | KEMİKLERİNİZİN DÖRTTE BİRİ | AYAĞINIZDA | ortopedi kliniği, masanın üstünde gerçek boyutlu ayak iskeleti modeli, uzakta ayak anatomisi gösteren bulanık monitör |
+| H2 | BU 26 KEMİĞİ | UNUTTUNUZ! | ortopedi kliniği, masanın üstünde gerçek boyutlu ayak iskeleti modeli, uzakta ayak anatomisi gösteren bulanık monitör |
 | H3 | SABAH İLK ADIMDA | TOPUĞUNUZ BATIYOR MU? | ortopedi kliniği, masanın üstünde ayak ve topuk kemiği modeli, uzakta ayak tabanı anatomisi gösteren bulanık monitör |
 | H4 | 10 YIL SONRA BU KEMİKLER | SİZİN OLMAYACAK | ortopedi kliniği, masanın üstünde tam boy iskelet modeli, uzakta kemik dokusu illüstrasyonu gösteren bulanık monitör |
 
